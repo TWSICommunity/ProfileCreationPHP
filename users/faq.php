@@ -1,0 +1,3 @@
+<?php
+ echo "<h1 style='text-align:center;'>Frequently asked questions</h1><br></br><b>Q: How can I register?</b><p>Simply go over to the <a href='profiles.php'>register</a> page and type your username and password and you should know what to do next after that.</p><b>Q: Why has my page been suspended?</b><p>Appriopiate action has been taken by the administrator. You should read the <a href='tos.php'>TOS</a> before any such actions you make in your profile page.</p><br></br><p>If you want to submit any questions feel free to compose an email to me at gamewolf10@gmail.com. Anything that has to do with TWSICommunity.</p><a href='index.html'>Return</a> back to the homesite page.";
+?>

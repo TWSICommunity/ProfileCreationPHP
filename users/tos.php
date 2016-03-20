@@ -1,0 +1,3 @@
+<?php
+ echo "<h1>Rules of creating and editing profile pages!</h1><ul><li>No pornographic pictures/videos!</li><li>No illegal content(such as drug related, racist, and hate speech.)</li><li>No virus links!</li><li>No jokes that are immature. Keep it PG-13!</li><li>No suspicious profile names/immature names.</li><li>No bitcoin faucet scripts!</li><li><a href='index.html'>Click</a> to return back home.</li></ul>";
+?>
