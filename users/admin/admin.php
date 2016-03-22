@@ -64,7 +64,9 @@
 				}elseif($action == 'edit page') {
 					//TODO: Any admins can edit the page without a password!
 				}elseif($action == 'restore page') {
-					//TODO: Make it so that it clears the uploads/main profile page to default.
+					$make_profile = fopen('../' . $userpage . '/index.php', 'w');
+					fwrite($make_profile, "<?php echo 'Welcome " . $userpage . ", to your page :)'; ?> <html><head><title>RESTORED BY ADMIN</title></head><body><p>Send An EMAIL To Me: Edit line with your email page.</p><br></br><img src='http://img00.deviantart.net/d755/i/2014/304/b/4/we_ve_waited_far_too_long_for_this__by_blixemi-d84r692.png'/><br></br><a href='edit/login.html'><input type'submit' value='Login to control panel'/></a></body></html>");
+					fclose($make_profile);
 				}
 			}
 			else
