@@ -98,3 +98,5 @@
    <br></br>
    <input type='submit' name='submit' value='Login And Take Action!'/>
   </form>	
+ </body>
+</html>
