@@ -11,4 +11,4 @@ form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>
 
 form
 
-5. Done! Now go on and install software available from users that host scripts or use my scripts that are made here.
+Done! Now go on and install software available from users that host scripts or use my scripts that are made here.
