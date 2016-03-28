@@ -27,7 +27,7 @@ else
 {
 		mkdir($user_reg);
 		$make_profile = fopen($user_reg . '/index.php', 'w');
-		fwrite($make_profile, "<?php echo 'Welcome " . $user_reg . ", to your page :)'; ?> <html><head><title>" . $dis_reg . "'s profile page</title></head><body><p>Send An EMAIL To Me: " . $email_reg . "</p><br></br><img src='http://img00.deviantart.net/d755/i/2014/304/b/4/we_ve_waited_far_too_long_for_this__by_blixemi-d84r692.png'/><br></br><a href='edit/login.html'><input type'submit' value='Login to control panel'/></a></body></html>");
+		fwrite($make_profile, "<?php echo 'Welcome " . $user_reg . ", to your page :)'; ?> <html><head><title>" . $dis_reg . "'s profile page</title></head><body><p>Send An EMAIL To Me: " . $email_reg . "</p><br></br><img src='http://img00.deviantart.net/d755/i/2014/304/b/4/we_ve_waited_far_too_long_for_this__by_blixemi-d84r692.png'/><br></br><a href='edit/login.html'><form><input type'submit' value='Login to control panel'/></form></a></body></html>");
 		fclose($make_profile);
 		//TODO: Make edit panel for the user's page.
 		mkdir($user_reg . '/edit');
