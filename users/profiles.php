@@ -27,7 +27,7 @@ else
 {
 		mkdir($user_reg);
 		$make_profile = fopen($user_reg . '/index.php', 'w');
-		fwrite($make_profile, "<?php echo 'Welcome " . $user_reg . ", to your page :)'; ?> <html><head><title>" . $dis_reg . "'s profile page</title></head><body><p>Send An EMAIL To Me: " . $email_reg . "</p><br></br><img src='http://img00.deviantart.net/d755/i/2014/304/b/4/we_ve_waited_far_too_long_for_this__by_blixemi-d84r692.png'/><br></br><a href='edit/login.html'><input type='submit' value='Login to control panel'/></a></body></html>");
+		fwrite($make_profile, "<?php echo 'Welcome " . $user_reg . ", to your page :)'; ?> <html><head><title>" . $dis_reg . "'s profile page</title></head><body><p>Send An EMAIL To Me: " . $email_reg . "</p><br></br><img style='position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-999999;' src='http://pre08.deviantart.net/b8f8/th/pre/f/2012/340/a/3/a38a0aee506a0b039ac5da896a7835a9-d5n980q.jpg'/><img src='http://img00.deviantart.net/d755/i/2014/304/b/4/we_ve_waited_far_too_long_for_this__by_blixemi-d84r692.png'/><br></br><a href='edit/login.html'><input type='submit' value='Login to control panel'/></a></body></html>");
 		fclose($make_profile);
 		//TODO: Make edit panel for the user's page.
 		mkdir($user_reg . '/edit');
