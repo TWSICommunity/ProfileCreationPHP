@@ -71,13 +71,13 @@
 			}
 			else
 			{
-				die("You do not have access to this site INVALID PASSWORD! <a href='../index.php'><input type='submit' value='Login and take action!'/></a>");
+				die("You do not have access to this site INVALID PASSWORD! <a href='../index.html'><input type='submit' value='Login and take action!'/></a>");
 				exit;
 			}
 		}
 		else
 		{
-			die("You do not have access to this site INVALID USERNAME! <a href='../index.php'><input type='submit' value='Login and take action!'/></a>");
+			die("You do not have access to this site INVALID USERNAME! <a href='../index.html'><input type='submit' value='Login and take action!'/></a>");
 			exit;
 		}
 	}
