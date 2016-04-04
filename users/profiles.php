@@ -20,7 +20,6 @@ function folder_exist($folder)
 		$pass_reg = $_POST['password'];
 		$dis_reg = $_POST['display_name'];
 		$email_reg = $_POST['email'];
-		$imgsrc = "<img src='' alt=''/>, 'php_html'";
 if (folder_exist($user_reg)){
  die('User page already exists! <a href="index.html"><input type="submit" value="Return to the main page!"/></a>');
 }
@@ -33,7 +32,7 @@ else
 		//TODO: Make edit panel for the user's page.
 		mkdir($user_reg . '/edit');
 		$make_editpage = fopen($user_reg . '/edit/editpage.php', 'w');
-		fwrite($make_editpage, '<?php $username = "' . $user_reg . '"; $password = "' . $pass_reg .'"; $username_posted = $_POST[username]; $password_posted = $_POST[password]; if($username_posted == $username) { if($password_posted == $password) { echo "Welcome, " . $username . " to page panel"; } else { header("Location: ../index.php"); exit(); }}else{ header("Location: ../index.php"); exit();} ?><html><head><title>Page Admin Panel</title></head><body><form action="writepage.php" method="post"><textarea name="change" id="php_html" rows="4" cols="50"><?php $read_page = fopen("../index.php", r); while(!feof($read_page)) { echo fgets($read_page); } fclose($read_page);?></textarea><br></br><input type="submit" value="Change page"/></form><input type="button" value="IMG Src" onclick="javascript:insert(' . $imgsrc . ');/></body></html>');
+		fwrite($make_editpage, '<?php $username = "' . $user_reg . '"; $password = "' . $pass_reg .'"; $username_posted = $_POST[username]; $password_posted = $_POST[password]; if($username_posted == $username) { if($password_posted == $password) { echo "Welcome, " . $username . " to page panel"; } else { header("Location: ../index.php"); exit(); }}else{ header("Location: ../index.php"); exit();} ?><html><head><title>Page Admin Panel</title></head><body><form action="writepage.php" method="post"><textarea name="change" rows="4" cols="50"><?php $read_page = fopen("../index.php", r); while(!feof($read_page)) { echo fgets($read_page); } fclose($read_page);?></textarea><br></br><input type="submit" value="Change page"/></form></body></html>');
 		fclose($make_editpage);
 		$make_login = fopen($user_reg . '/edit/login.html', 'w');
 		fwrite($make_login, '<!DOCTYPE html><html><head><title>Page Panel Login</title></head><body><form action="editpage.php" method="post"><input type="text" name="username" value="Type the username!"/><br></br><input type="password" name="password" value="Password"/><br></br><input type="submit" value="Login to page panel"/></form></body></html>');
