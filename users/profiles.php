@@ -74,7 +74,7 @@ else
   <b>List of profiles listed here!</b>
   <br></br>
 	<?php
-		$myfile = fopen("list.txt", "r");
+		$myfile = fopen("list.txt", "r") or die('ERROR: list.txt is not found, please ask administrator to place list.txt in the same folder in users.');
 		// Output one line until end-of-file
 		while(!feof($myfile)) {
 		echo fgets($myfile);
