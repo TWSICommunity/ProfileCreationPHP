@@ -46,6 +46,10 @@ else
         fwrite($ip_system, 'Created by ' . $ip_address . ' OWNER NOTE: If you see duplicated accounts deleted them or suspend their page.');
         fclose($ip_system);
 		
+		$list = fopen('list.txt', 'a');
+		fwrite($list, "<br><a href='" . $user_reg . "/index.php'>" . $user_reg . "'s Profile Page</a></br>");
+		fclose($list);
+		
 		echo 'Thank you, ' . $user_reg . ' for registering with us. <a href="' . $user_reg . '/index.php">Click</a> to visit your page and edit it by clicking (Login to page panel) button.';
 }
 	}
@@ -67,5 +71,15 @@ else
    <br></br>
    <input type="submit" name="submit" value="Register Profile Page!"/>
   </form>
+  <b>List of profiles listed here!</b>
+  <br></br>
+	<?php
+		$myfile = fopen("list.txt", "r");
+		// Output one line until end-of-file
+		while(!feof($myfile)) {
+		echo fgets($myfile);
+		}
+		fclose($myfile);
+	?>
  </body>
 </html>	
