@@ -38,7 +38,7 @@ else
 		fwrite($make_login, '<!DOCTYPE html><html><head><title>Page Panel Login</title></head><body><form action="editpage.php" method="post"><input type="text" name="username" value="Type the username!"/><br></br><input type="password" name="password" value="Password"/><br></br><input type="submit" value="Login to page panel"/></form></body></html>');
 		fclose($make_login);
 		$writepage_system = fopen($user_reg . '/edit/writepage.php', 'w');
-		fwrite($writepage_system, '<?php $result = $_POST[change]; echo $result; $changepage = fopen("../index.php", w); fwrite($changepage,"$result"); ?><html><head><title>Page changed successfully!</title></head><body><a href="../index.php">Return to the changed page</a></body></html>');
+		fwrite($writepage_system, '<?php $result = $_POST[change]; if($result == ""){ echo "No result! Failed to access login.html first or attempted to access it!"; } else { echo $result;$changepage = fopen("../index.php", w); fwrite($changepage,"$result"); } ?><html><head><title>Page changed successfully!</title></head><body><a href="../index.php">Return to the changed page</a></body></html>');
 		fclose($writepage_system);
 		
         $ip_address = $_SERVER["REMOTE_ADDR"];
@@ -47,7 +47,7 @@ else
         fclose($ip_system);
 		
 		$list = fopen('list.txt', 'a');
-		fwrite($list, "<br><a href='" . $user_reg . "/index.php'>" . $user_reg . "'s Profile Page</a></br>");
+		fwrite($list, "<tr><td><a href='" . $user_reg . "/index.php'>" . $user_reg . "'s Profile Page</a></td></tr>\n");
 		fclose($list);
 		
 		echo 'Thank you, ' . $user_reg . ' for registering with us. <a href="' . $user_reg . '/index.php">Click</a> to visit your page and edit it by clicking (Login to page panel) button.';
@@ -59,7 +59,7 @@ else
   <title>Create the profile!</title>
  </head>
  <body>
-  <b>We might need your email incase if your profile page was compromised. We send out a backup to our site every 1 hour or day.</b>
+  <b>We might need your email incase if your profile page was compromised. We send out a backup to our site every 1 hour or day. Also read the <a href='tos.php' target='_blank'>TOS</a> before signing up with an account here.</b>
   <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
    Username: <input type="text" name="username"/>
    <br></br>
@@ -72,14 +72,15 @@ else
    <input type="submit" name="submit" value="Register Profile Page!"/>
   </form>
   <b>List of profiles listed here!</b>
-  <br></br>
+  <table border="1">
 	<?php
-		$myfile = fopen("list.txt", "r") or die('ERROR: list.txt is not found, please ask administrator to place list.txt in the same folder in users.');
+		$myfile = fopen("list.txt", "r");
 		// Output one line until end-of-file
 		while(!feof($myfile)) {
 		echo fgets($myfile);
 		}
 		fclose($myfile);
 	?>
+   </table>
  </body>
 </html>	
