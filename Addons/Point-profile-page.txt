@@ -1,0 +1,42 @@
+<?php
+ if(isset($_POST['add_score']))
+ {
+	 if (file_exists('score.txt'))
+	 {
+		 $number = 1;
+		 $read_score = fopen('score.txt', 'r');
+		 $number = fread($read_score, filesize('score.txt'));
+		 fclose($read_score);
+		 $add_score = fopen('score.txt', 'w');
+		 $number = $number + 1;
+		 fwrite($add_score, $number);
+		 fclose($add_score);
+		 echo '<br></br>Thank you! I now have ' . $number . ' pts in my profile page :)';
+	 }
+	 else
+	 {
+		 $number = 1;
+		 $make_score = fopen('score.txt', 'w');
+		 fwrite($make_score, $number);
+		 fclose($make_score);
+		 echo 'Installed!';
+	 }
+ }
+ if(isset($_POST['show_score']))
+ {
+	 	$number = 1;
+		$read_score = fopen('score.txt', 'r');
+		$number = fread($read_score, filesize('score.txt'));
+		fclose($read_score);
+		echo '<br></br>I have ' . $number . ' pts in my profile page :)';
+ }
+?>
+
+<!-- Then put this anywhere inside <body> -->
+<form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+<input type='submit' name='add_score' value='Add a score!'/>
+</form>
+<form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+<input type='submit' name='show_score' value='Show my score!'/>
+</form>
+<!-- after that hit change page! And enjoy your new point system. :) -->
