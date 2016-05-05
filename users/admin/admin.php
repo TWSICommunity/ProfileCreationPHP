@@ -53,6 +53,7 @@
 				}elseif($action == 'clear uploads') {
 					//Working on this command...
 				}elseif($action == 'unsuspend page') {
+					mkdir('../' . $userpage . '/edit');
 					copy('../../account_suspend/' . $userpage . '/index.php', '../' . $userpage . '/index.php');
 					copy('../../account_suspend/' . $userpage . '/edit/login.html', '../' . $userpage . '/edit/login.html');
 					copy('../../account_suspend/' . $userpage . '/edit/writepage.php', '../' . $userpage . '/edit/writepage.php');
@@ -97,6 +98,18 @@
    Command: <input type='text' name='command'/>
    <br></br>
    <input type='submit' name='submit' value='Login And Take Action!'/>
-  </form>	
+  </form>
+  <br></br>
+  <b>List of profile pages!</b>
+  <table border="1">
+  	<?php
+		$myfile = fopen("../list.txt", "r");
+		// Output one line until end-of-file
+		while(!feof($myfile)) {
+		echo fgets($myfile);
+		}
+		fclose($myfile);
+	?>
+   </table>
  </body>
 </html>
