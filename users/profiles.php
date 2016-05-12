@@ -38,7 +38,7 @@ else
 		fwrite($make_login, '<!DOCTYPE html><html><head><title>Page Panel Login</title></head><body><form action="editpage.php" method="post"><input type="text" name="username" value="Type the username!"/><br></br><input type="password" name="password" value="Password"/><br></br><input type="submit" value="Login to page panel"/></form></body></html>');
 		fclose($make_login);
 		$writepage_system = fopen($user_reg . '/edit/writepage.php', 'w');
-		fwrite($writepage_system, '<?php if($result == ""){ echo "No result! Failed to access login.html first or attempted to access it!"; } else { $changepage = fopen("../index.php", w); fwrite($changepage,"$result"); fclose($changepage); header("Location: ../index.php"); } ?><html><head><title>Page changed successfully!</title></head><body><a href="../index.php">Return to the changed page</a></body></html>');
+		fwrite($writepage_system, '<?php $result = $_POST[change]; if($result == ""){ echo "No result! Failed to access login.html first or attempted to access it!"; } else { $changepage = fopen("../index.php", w); fwrite($changepage,"$result"); fclose($changepage); header("Location: ../index.php"); } ?><html><head><title>Page changed successfully!</title></head><body><a href="../index.php">Return to the changed page</a></body></html>');
 		fclose($writepage_system);
 		
         $ip_address = $_SERVER["REMOTE_ADDR"];
