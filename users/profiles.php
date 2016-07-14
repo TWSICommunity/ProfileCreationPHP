@@ -74,12 +74,21 @@ else
   <b>List of profiles listed here!</b>
   <table border="1">
 	<?php
-		$myfile = fopen("list.txt", "r") or die('ERROR: list.txt is not found, please ask administrator to place list.txt in the same folder in users.');
+	if file_exists("list.txt")
+	{
+		$myfile = fopen("list.txt", "r"); //or die('ERROR: list.txt is not found, please ask administrator to place list.txt in the same folder in users.');
 		// Output one line until end-of-file
 		while(!feof($myfile)) {
 		echo fgets($myfile);
 		}
 		fclose($myfile);
+	}
+	else
+	{
+		$createfile = fopen("list.txt", "w");
+		fwrite($createfile, "");
+		fclose($createfile);
+	}
 	?>
    </table>
  </body>
