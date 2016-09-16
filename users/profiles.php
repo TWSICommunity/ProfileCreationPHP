@@ -20,6 +20,7 @@ function folder_exist($folder)
 		$pass_reg = $_POST['password'];
 		$dis_reg = $_POST['display_name'];
 		$email_reg = $_POST['email'];
+		$profilepic = $_POST['img_url'];
 if (folder_exist($user_reg)){
  die('User page already exists! <a href="index.html"><input type="submit" value="Return to the main page!"/></a>');
 }
@@ -32,7 +33,7 @@ else
 		//TODO: Make edit panel for the user's page.
 		mkdir($user_reg . '/edit');
 		$make_editpage = fopen($user_reg . '/edit/editpage.php', 'w');
-		fwrite($make_editpage, '<?php $username = "' . $user_reg . '"; $password = "' . $pass_reg .'"; $username_posted = $_POST[username]; $password_posted = $_POST[password]; if($username_posted == $username) { if($password_posted == $password) { echo "Welcome, " . $username . " to page panel"; } else { header("Location: ../index.php"); exit(); }}else{ header("Location: ../index.php"); exit();} ?><html><head><title>Page Admin Panel</title></head><body><form action="writepage.php" method="post"><textarea name="change" rows="4" cols="50"><?php $read_page = fopen("../index.php", r); while(!feof($read_page)) { echo fgets($read_page); } fclose($read_page);?></textarea><br></br><input type="submit" value="Change page"/></form></body></html>');
+		fwrite($make_editpage, '<?php $username = "' . $user_reg . '"; $password = "' . $pass_reg .'"; $username_posted = $_POST[username]; $password_posted = $_POST[password]; if($username_posted == $username) { if($password_posted == $password) { echo "Welcome, " . $username . " to page panel"; } else { header("Location: ../index.php"); exit(); }}else{ header("Location: ../index.php"); exit();} ?><html><head><title>Page Admin Panel</title></head><body><br></br><img src="' . $profilepic . '" height="128px" width="128px" /><br></br><form action="writepage.php" method="post"><textarea name="change" rows="4" cols="50"><?php $read_page = fopen("../index.php", r); while(!feof($read_page)) { echo fgets($read_page); } fclose($read_page);?></textarea><br></br><input type="submit" value="Change page"/></form></body></html>');
 		fclose($make_editpage);
 		$make_login = fopen($user_reg . '/edit/login.html', 'w');
 		fwrite($make_login, '<!DOCTYPE html><html><head><title>Page Panel Login</title></head><body><form action="editpage.php" method="post"><input type="text" name="username" value="Type the username!"/><br></br><input type="password" name="password" value="Password"/><br></br><input type="submit" value="Login to page panel"/></form></body></html>');
@@ -47,7 +48,7 @@ else
         fclose($ip_system);
 		
 		$list = fopen('list.txt', 'a');
-		fwrite($list, "<tr><td><a href='" . $user_reg . "/index.php'>" . $user_reg . "'s Profile Page</a></td></tr>\n");
+		fwrite($list, "<tr><td><img src='" . $profilepic . "' width='64px' height='64px' /></td><td><a href='" . $user_reg . "/index.php'>" . $user_reg . "'s Profile Page</a></td></tr>\n");
 		fclose($list);
 		
 		echo 'Thank you, ' . $user_reg . ' for registering with us. <a href="' . $user_reg . '/index.php">Click</a> to visit your page and edit it by clicking (Login to page panel) button.';
@@ -68,6 +69,8 @@ else
    Display Name: <input type="text" name="display_name"/>
    <br></br>
    E-mail: <input type="text" name="email"/>
+   <br></br>
+   Image URL: <input type="text" name="img_url"/>
    <br></br>
    <input type="submit" name="submit" value="Register Profile Page!"/>
   </form>
